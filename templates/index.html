@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Blog | Home{% endblock %}
+
+{% block body %}
+<div class="row row-gap-4 col-gap-4 my-4">
+
+    {% for post in posts %}
+    <div class="col-sm-12 col-md-4 col-lg-3">
+        <div class="card">
+            {% thumbnail post.image "200x200" crop="center" as im %}
+            <img src="{{ im.url }}" class="card-img-top" alt="{{ post.text }}">
+            {% endthumbnail %}
+            <div class="card-body">
+                <h5 class="card-title text-truncate">{{ post.title.capitalize }}</h5>
+                <p class="card-text">{{ post.description|slice:"0:50" }}</p>
+                <a href="{% url 'feed:post-detail' post.id %}" class="btn btn-primary">Show full</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-sm-6 py-4 my-4">
+        <h2>Welcome!</h2>
+        <p>There are no posts yet. Be the first one to share!</p>
+        <a href="{% url 'feed:add-post' %}" class="btn btn-primary">Add New Post</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
