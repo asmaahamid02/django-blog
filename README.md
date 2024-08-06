@@ -46,3 +46,7 @@ This is a simple blog project created using Django. It has the following feature
 - Create a new blog post by visiting `/post/add/`
 - Update a blog post by visiting `/post/<id>/update/`
 - Delete a blog post by visiting `/post/<id>/delete/`
+
+## Demo
+
+<img src="./readme/demo.gif" alt="Demo" width="800">
